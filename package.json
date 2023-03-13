@@ -1,0 +1,22 @@
+{
+  "name": "idealogo",
+  "version": "1.0.0",
+  "description": "All you need to answer some questions and you will generate your own SVG file logo",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
