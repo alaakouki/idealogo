@@ -6,9 +6,9 @@ const {Circle, Triangle, Square} = require("./lib/shapes.js");
 
 // ======================================================
 
-function svgFile({logoCharacters, charactersClr, logoShape, shapeClr} , shapeContent) {
+function svgFile({logoCharacters, charactersClr, logoShape, shapeClr} , shape) {
     return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-    ${shapeContent}
+    ${shape}
     <text x="150" y="125" font-size="60" text-anchor="middle" fill="${charactersClr}">${logoCharacters}</text>
     </svg>`;
 
@@ -58,19 +58,19 @@ function writeToFile(fileName, data){
 function init() {
 inquirer.prompt(userInput).then(userAnswers => {
 
-let shapeContent;
+let shape;
 
 switch (userAnswers.logoShape){
     case "Circle":
-    shapeContent = new Circle(userAnswers.logoCharacters, userAnswers.charactersClr, userAnswers.shapeClr);
+    shape = new Circle(userAnswers.logoCharacters, userAnswers.charactersClr, userAnswers.shapeClr);
     break;
     
     case "Square":
-    shapeContent = new Square(userAnswers.logoCharacters, userAnswers.charactersClr, userAnswers.shapeClr);
+    shape = new Square(userAnswers.logoCharacters, userAnswers.charactersClr, userAnswers.shapeClr);
     break;
     
     case "Triangle":
-    shapeContent = new Triangle(userAnswers.logoCharacters, userAnswers.charactersClr, userAnswers.shapeClr);
+    shape = new Triangle(userAnswers.logoCharacters, userAnswers.charactersClr, userAnswers.shapeClr);
     break;
     
     default:
