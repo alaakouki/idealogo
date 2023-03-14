@@ -2,11 +2,13 @@ const inquirer = require ("inquirer");
 const fs = require("fs");
 // const Shapes = require("./lib/shapes.js");
 const {Circle, Triangle, Square} = require("./lib/shapes.js");
-
+let shape;
 
 // ======================================================
 
 function svgFile({logoCharacters, charactersClr, logoShape, shapeClr} , shape) {
+    shape.setColor();
+    shape = shape.render();
     return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
     ${shape}
     <text x="150" y="125" font-size="60" text-anchor="middle" fill="${charactersClr}">${logoCharacters}</text>
@@ -52,7 +54,7 @@ const userInput = [
 function init() {
 inquirer.prompt(userInput).then(userAnswers => {
 
-let shape;
+
 
 switch (userAnswers.logoShape){
     case "Circle":
