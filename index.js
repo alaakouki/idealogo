@@ -14,8 +14,8 @@ function svgFile({logoCharacters, charactersClr, logoShape, shapeClr} , shape) {
 
 }
 
-
 // ======================================================
+
 
 // User need to answer these questions to get his/her logo
 const userInput = [
@@ -48,13 +48,7 @@ const userInput = [
     },
 ];
 
-
-function writeToFile(fileName, data){
-
-    fs.writeFile(fileName, data, (error) =>
-    error ? console.log(error) : console.log("logo.svg has been generated")
-)};
-
+// initialize the app depending on user answers
 function init() {
 inquirer.prompt(userInput).then(userAnswers => {
 
@@ -79,8 +73,14 @@ switch (userAnswers.logoShape){
 
 }
 
-    writeToFile ("./examples/logo.svg", userAnswers);
-});
-}
+// creating SVG file
+const content = svgFile(userAnswers, shape);
+fs.writeFile("./examples/logo.svg", content, (err) => 
+    err ? console.log(err) : console.log("Created SVG file!")
+);
+})
+.catch((error) => {
+console.log("could not create file", error);
+})};
 
 init();
